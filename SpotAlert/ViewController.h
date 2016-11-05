@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReserveClassModel.h"
+
+#define REMINDER_CHECK_PERIOD 3600 //seconds
 
 @interface ViewController : UIViewController
+- (void) sendSpotStatusRequest;
 
-
+@property (strong, nonatomic) NSString *prevPageData;
 @end
 

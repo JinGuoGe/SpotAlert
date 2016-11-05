@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		777F8B3A1D9146390059623D /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F8B351D9146390059623D /* RIButtonItem.m */; };
+		777F8B3B1D9146390059623D /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F8B371D9146390059623D /* UIActionSheet+Blocks.m */; };
+		777F8B3C1D9146390059623D /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F8B391D9146390059623D /* UIAlertView+Blocks.m */; };
+		77818EAF1D4C58F200B41760 /* alarm.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 77818EAE1D4C58F200B41760 /* alarm.WAV */; };
+		778AF7431D783BBF001CDEE7 /* UnreadMsgsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 778AF7421D783BBF001CDEE7 /* UnreadMsgsViewController.m */; };
+		77B026E61D62AB9D00B01471 /* ReserveClassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B026E51D62AB9D00B01471 /* ReserveClassModel.m */; };
 		77F441901D43EC7000DE8BA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F4418F1D43EC7000DE8BA7 /* main.m */; };
 		77F441931D43EC7000DE8BA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F441921D43EC7000DE8BA7 /* AppDelegate.m */; };
 		77F441961D43EC7000DE8BA7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F441951D43EC7000DE8BA7 /* ViewController.m */; };
@@ -14,9 +20,25 @@
 		77F4419C1D43EC7000DE8BA7 /* SpotAlert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77F4419A1D43EC7000DE8BA7 /* SpotAlert.xcdatamodeld */; };
 		77F4419E1D43EC7000DE8BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77F4419D1D43EC7000DE8BA7 /* Assets.xcassets */; };
 		77F441A11D43EC7000DE8BA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77F4419F1D43EC7000DE8BA7 /* LaunchScreen.storyboard */; };
+		77F4420D1D4A086F00DE8BA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F4420C1D4A086F00DE8BA7 /* Foundation.framework */; };
+		77F4420F1D4A088F00DE8BA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F4420E1D4A088F00DE8BA7 /* CoreGraphics.framework */; };
+		77F442111D4A089E00DE8BA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F442101D4A089E00DE8BA7 /* UIKit.framework */; };
+		77F442141D4A18BA00DE8BA7 /* AlertSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F442131D4A18BA00DE8BA7 /* AlertSettingViewController.m */; };
+		77F442181D4A689500DE8BA7 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F442171D4A689500DE8BA7 /* CustomTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		777F8B341D9146390059623D /* RIButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
+		777F8B351D9146390059623D /* RIButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
+		777F8B361D9146390059623D /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		777F8B371D9146390059623D /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		777F8B381D9146390059623D /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		777F8B391D9146390059623D /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		77818EAE1D4C58F200B41760 /* alarm.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.WAV; sourceTree = "<group>"; };
+		778AF7411D783BBF001CDEE7 /* UnreadMsgsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnreadMsgsViewController.h; sourceTree = "<group>"; };
+		778AF7421D783BBF001CDEE7 /* UnreadMsgsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnreadMsgsViewController.m; sourceTree = "<group>"; };
+		77B026E41D62AB9D00B01471 /* ReserveClassModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReserveClassModel.h; sourceTree = "<group>"; };
+		77B026E51D62AB9D00B01471 /* ReserveClassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReserveClassModel.m; sourceTree = "<group>"; };
 		77F4418B1D43EC7000DE8BA7 /* SpotAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F4418F1D43EC7000DE8BA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		77F441911D43EC7000DE8BA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,6 +50,13 @@
 		77F4419D1D43EC7000DE8BA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77F441A01D43EC7000DE8BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77F441A21D43EC7000DE8BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77F4420C1D4A086F00DE8BA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		77F4420E1D4A088F00DE8BA7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		77F442101D4A089E00DE8BA7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		77F442121D4A18BA00DE8BA7 /* AlertSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertSettingViewController.h; sourceTree = "<group>"; };
+		77F442131D4A18BA00DE8BA7 /* AlertSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertSettingViewController.m; sourceTree = "<group>"; };
+		77F442161D4A689500DE8BA7 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		77F442171D4A689500DE8BA7 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,12 +64,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77F442111D4A089E00DE8BA7 /* UIKit.framework in Frameworks */,
+				77F4420F1D4A088F00DE8BA7 /* CoreGraphics.framework in Frameworks */,
+				77F4420D1D4A086F00DE8BA7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		777F8B321D9146390059623D /* Thirdparty */ = {
+			isa = PBXGroup;
+			children = (
+				777F8B331D9146390059623D /* UIAlertView+Blocks */,
+			);
+			path = Thirdparty;
+			sourceTree = "<group>";
+		};
+		777F8B331D9146390059623D /* UIAlertView+Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				777F8B341D9146390059623D /* RIButtonItem.h */,
+				777F8B351D9146390059623D /* RIButtonItem.m */,
+				777F8B361D9146390059623D /* UIActionSheet+Blocks.h */,
+				777F8B371D9146390059623D /* UIActionSheet+Blocks.m */,
+				777F8B381D9146390059623D /* UIAlertView+Blocks.h */,
+				777F8B391D9146390059623D /* UIAlertView+Blocks.m */,
+			);
+			path = "UIAlertView+Blocks";
+			sourceTree = "<group>";
+		};
+		77B026E31D62AB5F00B01471 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77B026E41D62AB9D00B01471 /* ReserveClassModel.h */,
+				77B026E51D62AB9D00B01471 /* ReserveClassModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		77F441821D43EC7000DE8BA7 = {
 			isa = PBXGroup;
 			children = (
@@ -64,11 +126,20 @@
 				77F441921D43EC7000DE8BA7 /* AppDelegate.m */,
 				77F441941D43EC7000DE8BA7 /* ViewController.h */,
 				77F441951D43EC7000DE8BA7 /* ViewController.m */,
+				77F442121D4A18BA00DE8BA7 /* AlertSettingViewController.h */,
+				77F442131D4A18BA00DE8BA7 /* AlertSettingViewController.m */,
+				778AF7411D783BBF001CDEE7 /* UnreadMsgsViewController.h */,
+				778AF7421D783BBF001CDEE7 /* UnreadMsgsViewController.m */,
 				77F441971D43EC7000DE8BA7 /* Main.storyboard */,
 				77F4419D1D43EC7000DE8BA7 /* Assets.xcassets */,
 				77F4419F1D43EC7000DE8BA7 /* LaunchScreen.storyboard */,
 				77F441A21D43EC7000DE8BA7 /* Info.plist */,
+				77818EAE1D4C58F200B41760 /* alarm.WAV */,
+				777F8B321D9146390059623D /* Thirdparty */,
+				77B026E31D62AB5F00B01471 /* Model */,
+				77F442151D4A687100DE8BA7 /* CustomTableViewCell */,
 				77F4419A1D43EC7000DE8BA7 /* SpotAlert.xcdatamodeld */,
+				77F4420B1D4A083B00DE8BA7 /* Frameworks */,
 				77F4418E1D43EC7000DE8BA7 /* Supporting Files */,
 			);
 			path = SpotAlert;
@@ -80,6 +151,25 @@
 				77F4418F1D43EC7000DE8BA7 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		77F4420B1D4A083B00DE8BA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77F442101D4A089E00DE8BA7 /* UIKit.framework */,
+				77F4420E1D4A088F00DE8BA7 /* CoreGraphics.framework */,
+				77F4420C1D4A086F00DE8BA7 /* Foundation.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		77F442151D4A687100DE8BA7 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				77F442161D4A689500DE8BA7 /* CustomTableViewCell.h */,
+				77F442171D4A689500DE8BA7 /* CustomTableViewCell.m */,
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,6 +203,12 @@
 				TargetAttributes = {
 					77F4418A1D43EC7000DE8BA7 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = TGC228QJXU;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -141,6 +237,7 @@
 			files = (
 				77F441A11D43EC7000DE8BA7 /* LaunchScreen.storyboard in Resources */,
 				77F4419E1D43EC7000DE8BA7 /* Assets.xcassets in Resources */,
+				77818EAF1D4C58F200B41760 /* alarm.WAV in Resources */,
 				77F441991D43EC7000DE8BA7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,9 +249,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				777F8B3A1D9146390059623D /* RIButtonItem.m in Sources */,
 				77F4419C1D43EC7000DE8BA7 /* SpotAlert.xcdatamodeld in Sources */,
 				77F441961D43EC7000DE8BA7 /* ViewController.m in Sources */,
+				777F8B3B1D9146390059623D /* UIActionSheet+Blocks.m in Sources */,
+				77F442181D4A689500DE8BA7 /* CustomTableViewCell.m in Sources */,
 				77F441931D43EC7000DE8BA7 /* AppDelegate.m in Sources */,
+				777F8B3C1D9146390059623D /* UIAlertView+Blocks.m in Sources */,
+				77F442141D4A18BA00DE8BA7 /* AlertSettingViewController.m in Sources */,
+				778AF7431D783BBF001CDEE7 /* UnreadMsgsViewController.m in Sources */,
+				77B026E61D62AB9D00B01471 /* ReserveClassModel.m in Sources */,
 				77F441901D43EC7000DE8BA7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SpotAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigcity.SpotAlert;
@@ -276,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SpotAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigcity.SpotAlert;
@@ -302,6 +408,7 @@
 				77F441A71D43EC7000DE8BA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

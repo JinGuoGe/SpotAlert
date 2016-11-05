@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
+#import "UIAlertView+Blocks.h"
 @interface AppDelegate ()
 
 @end
@@ -17,7 +18,140 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+   
+    self.reservedSpots = [[NSMutableDictionary alloc] init];
+    self.reservedClasses = [[NSMutableDictionary alloc] init];
+    self.reserveUrlDic = [[NSMutableDictionary alloc] init];
+    self.unreserveUrlDic = [[NSMutableDictionary alloc] init];
+    self.unreadMsgs = [NSMutableArray new];
+    self.lastCheckTime = NULL;
+    self.isRequestedSpotMonitor = false;
+    
+    NSLog(@"Finish launch");
+    
+    UIApplication* app = [UIApplication sharedApplication];
+    
+    self.expirationHandler = ^{
+        [app endBackgroundTask:self.bgTask];
+        self.bgTask = UIBackgroundTaskInvalid;
+        self.bgTask = [app beginBackgroundTaskWithExpirationHandler:self.expirationHandler];
+        NSLog(@"Expired");
+        self.jobExpired = YES;
+        while(self.jobExpired) {
+            // spin while we wait for the task to actually end.
+            [NSThread sleepForTimeInterval:1];
+        }
+        // Restart the background task so we can run forever.
+        [self startBackgroundTask];
+    };
+    self.bgTask = [app beginBackgroundTaskWithExpirationHandler:self.expirationHandler];
+
+    
+    [launchOptions valueForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    NSData *cookieData = [NSKeyedArchiver archivedDataWithRootObject:cookies];
+    [[NSUserDefaults standardUserDefaults] setObject:cookieData forKey:@"Cookies"];
+    
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive) {
+        NSLog(@"Recived notification in foreground");
+        
+        if ([notification.alertBody rangeOfString:@"cancel this spot"].location == NSNotFound) {
+            NSString *confirmMsg = [NSString stringWithFormat:@"%@ \n Are you going to reserve now?", notification.alertBody];
+            RIButtonItem *noButton = [RIButtonItem itemWithLabel:@"No" action:^{
+                [self.reserveUrlDic removeObjectForKey:notification.alertBody];
+            }];
+            
+            RIButtonItem *yesButton = [RIButtonItem itemWithLabel:@"Yes" action:^{
+                NSString *requestUrl = [NSString stringWithFormat:@"https://www.barrysbootcamp.com%@",[self.reserveUrlDic objectForKey:notification.alertBody]];
+                [self sendSpotReserveRequest:requestUrl];
+                [self.reserveUrlDic removeObjectForKey:notification.alertBody];
+            }];
+            
+            
+            UIAlertView *notificationAlert = [[UIAlertView alloc]initWithTitle:@"SpotAlert" message:confirmMsg cancelButtonItem:noButton otherButtonItems:yesButton, nil];
+            [notificationAlert show];
+            
+            // Set icon badge number to zero
+            [self.unreadMsgs removeObject:notification.alertBody];
+            application.applicationIconBadgeNumber = self.unreadMsgs.count;
+        }
+        else
+        {
+            RIButtonItem *noButton = [RIButtonItem itemWithLabel:@"No" action:^{
+                [self.unreserveUrlDic removeObjectForKey:notification.alertBody];
+            }];
+            
+            RIButtonItem *yesButton = [RIButtonItem itemWithLabel:@"Yes" action:^{
+                NSString *requestUrl = [NSString stringWithFormat:@"https://www.barrysbootcamp.com%@",[self.unreserveUrlDic objectForKey:notification.alertBody]];
+                [self sendSpotReserveRequest:requestUrl];
+                [self.unreserveUrlDic removeObjectForKey:notification.alertBody];
+            }];
+            
+            
+            UIAlertView *notificationAlert = [[UIAlertView alloc]initWithTitle:@"SpotAlert" message:notification.alertBody cancelButtonItem:noButton otherButtonItems:yesButton, nil];
+            [notificationAlert show];
+
+        }
+        
+    }
+    
+    else if (state == UIApplicationStateInactive) {
+        NSLog(@"Recived notification in Inactive");
+        
+        if ([notification.alertBody rangeOfString:@"cancel this spot"].location == NSNotFound)
+        {
+            NSString *confirmMsg = [NSString stringWithFormat:@"%@ \n Are you going to reserve now?", notification.alertBody];
+            RIButtonItem *noButton = [RIButtonItem itemWithLabel:@"No" action:^{
+                [self.reserveUrlDic removeObjectForKey:notification.alertBody];
+            }];
+            
+            RIButtonItem *yesButton = [RIButtonItem itemWithLabel:@"Yes" action:^{
+                NSString *requestUrl = [NSString stringWithFormat:@"https://www.barrysbootcamp.com%@",[self.reserveUrlDic objectForKey:notification.alertBody]];
+                [self sendSpotReserveRequest:requestUrl];
+                [self.reserveUrlDic removeObjectForKey:notification.alertBody];
+            }];
+            
+            
+            UIAlertView *notificationAlert = [[UIAlertView alloc]initWithTitle:@"SpotAlert" message:confirmMsg cancelButtonItem:noButton otherButtonItems:yesButton, nil];
+            [notificationAlert show];
+            
+            // Set icon badge number to zero
+            [self.unreadMsgs removeObject:notification.alertBody];
+            application.applicationIconBadgeNumber = self.unreadMsgs.count;
+        }
+        else
+        {
+            RIButtonItem *noButton = [RIButtonItem itemWithLabel:@"No" action:^{
+                [self.unreserveUrlDic removeObjectForKey:notification.alertBody];
+            }];
+            
+            RIButtonItem *yesButton = [RIButtonItem itemWithLabel:@"Yes" action:^{
+                NSString *requestUrl = [NSString stringWithFormat:@"https://www.barrysbootcamp.com%@",[self.unreserveUrlDic objectForKey:notification.alertBody]];
+                [self sendSpotReserveRequest:requestUrl];
+                [self.unreserveUrlDic removeObjectForKey:notification.alertBody];
+            }];
+            
+            
+            UIAlertView *notificationAlert = [[UIAlertView alloc]initWithTitle:@"SpotAlert" message:notification.alertBody cancelButtonItem:noButton otherButtonItems:yesButton, nil];
+            [notificationAlert show];
+
+            
+        }
+
+    }
+   /* else if (state == UIApplicationStateBackground) {
+        NSLog(@"Recived notification in background");
+    } */
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -28,6 +162,57 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    NSLog(@"Entered background");
+    [self monitorBatteryStateInBackground];
+}
+- (void)monitorBatteryStateInBackground
+{
+    
+    NSLog(@"Monitoring battery state");
+    self.background = YES;
+    
+    [self startBackgroundTask];
+}
+- (void) sendSpotReserveRequest:(NSString *) reserveURL {
+   
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:reserveURL]];
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@".barrysbootcamp.com"]];
+    NSDictionary *headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
+    [request setAllHTTPHeaderFields:headers];
+    [[NSURLConnection alloc]initWithRequest:request delegate:nil];
+}
+- (void)startBackgroundTask
+{
+    NSLog(@"Restarting task");
+    // Start the long-running task.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // When the job expires it still keeps running since we never exited it. Thus have the expiration handler
+        // set a flag that the job expired and use that to exit the while loop and end the task.
+        while(self.background && !self.jobExpired)
+        {
+            
+            [NSThread sleepForTimeInterval:1];
+            UINavigationController *navigationController = [self.window rootViewController];
+            for (UIViewController *viewController in navigationController.viewControllers ) {
+                if ([viewController isKindOfClass:[ViewController class]]) {
+                    if (self.reservedSpots.count > 0) {
+                        id mainController = (ViewController *) viewController;
+                        [mainController sendSpotStatusRequest];
+                    }
+                }
+            }
+            
+            /*id mainController = (ViewController*)  self.window.rootViewController;
+            if ([mainController isKindOfClass:[ViewController class]]) {
+                if (self.reservedSpots.count > 0) {
+                    [mainController sendSpotStatusRequest];
+                }
+            }*/
+           
+        }
+        
+        self.jobExpired = NO;
+    });
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -36,11 +221,18 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSLog(@"App is active");
+    self.background = NO;
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    NSData *cookieData = [NSKeyedArchiver archivedDataWithRootObject:cookies];
+    [[NSUserDefaults standardUserDefaults] setObject:cookieData forKey:@"Cookies"];
+    
     [self saveContext];
 }
 
